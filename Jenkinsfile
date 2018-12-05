@@ -2,6 +2,9 @@
 
 // variables
 def gitBranch;
+def codebuildProject = "acme-ci-nodejs-carbon-generic"
+def artifactsBucket = "acme-ci-jenkins-codebuild";
+def artifactsPath = "artifacts"
 
 node {
     stage('Dependencies') {
@@ -10,13 +13,13 @@ node {
     }
 
     stage('Build & Test') {
-        awsCodeBuild projectName: 'acme-ci-nodejs-carbon-generic',
+        awsCodeBuild projectName: codebuildProject
             credentialsType: 'keys',
             region: 'us-east-1',
             sourceControlType: 'jenkins',
-            artifactLocationOverride: 'acme-ci-jenkins-codebuild',
+            artifactLocationOverride: artifactsBucket,
             artifactPackagingOverride: 'ZIP',
-            artifactPathOverride: 'artifacts',
+            artifactPathOverride: artifactsPath,
             artifactTypeOverride: 'S3',
             artifactNameOverride: 'acme-web-app'
     }
