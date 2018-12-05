@@ -15,8 +15,9 @@ node {
             region: 'us-east-1',
             sourceControlType: 'jenkins',
             artifactLocationOverride: 'acme-ci-jenkins-codebuild',
+            artifactPathOverride: 'artifacts'
             artifactTypeOverride: 'S3',
-            artifactNameOverride: 'artifacts-acme-web-app'
+            artifactNameOverride: 'acme-web-app'
     }
 
     stage('Copy Artifacts') {
