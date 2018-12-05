@@ -13,7 +13,7 @@ node {
     }
 
     stage('Build & Test') {
-        awsCodeBuild projectName: codebuildProject
+        awsCodeBuild projectName: codebuildProject,
             credentialsType: 'keys',
             region: 'us-east-1',
             sourceControlType: 'jenkins',
