@@ -18,9 +18,9 @@ node {
             sourceControlType: 'jenkins',
             artifactLocationOverride: ARTIFACT_BUCKET,
             artifactPackagingOverride: 'ZIP',
-            ARTIFACT_PATHOverride: ARTIFACT_PATH,
+            artifactPathOverride: ARTIFACT_PATH,
             artifactTypeOverride: 'S3',
-            ARTIFACT_NAMEOverride: "${ARTIFACT_NAME}-${env.BUILD_NUMBER}"
+            artifactNameOverride: "${ARTIFACT_NAME}-${env.BUILD_NUMBER}"
     }
 
     stage('Copy Artifacts') {
