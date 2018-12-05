@@ -11,6 +11,7 @@ node {
     stage('Dependencies') {
         checkout scm
         gitBranch = env.BRANCH_NAME;
+        sh "env"
     }
 
     stage('Build & Test') {
