@@ -14,7 +14,7 @@ node {
     }
 
     stage('Copy Artifacts') {
-        sh "aws s3 cp s3://acme-ci-jenkins-codebuild/artifacts/generic ./artifacts.zip"
+        sh "aws s3 cp s3://acme-ci-jenkins-codebuild/artifacts/generic/acme-ci-nodejs-carbon-generic ./artifacts.zip"
         sh "jar xf artifacts.zip && rm -f artifacts.zip"
         junit "test-results/*.xml"
    }
