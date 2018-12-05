@@ -1,16 +1,13 @@
 #!groovy
 
-// variables
-def gitBranch;
-def codebuildProject = "acme-ci-nodejs-carbon-generic"
-def artifactBucket = "acme-ci-jenkins-codebuild";
-def artifactPath = "artifacts"
-def artifactName = "acme-web-app"
+final codebuildProject = "acme-ci-nodejs-carbon-generic"
+final artifactBucket = "acme-ci-jenkins-codebuild";
+final artifactPath = "artifacts"
+final artifactName = "acme-web-app"
 
 node {
     stage('Dependencies') {
         checkout scm
-        gitBranch = env.BRANCH_NAME;
         sh "env"
     }
 
@@ -23,12 +20,12 @@ node {
             artifactPackagingOverride: 'ZIP',
             artifactPathOverride: artifactPath,
             artifactTypeOverride: 'S3',
-            artifactNameOverride: artifactName
+            artifactNameOverride: "${artifactName}-${env.BUILD_NUMBER}"
     }
 
     stage('Copy Artifacts') {
         sh "aws configure set s3.signature_version s3v4"
-        sh "aws s3 cp s3://${artifactBucket}/${artifactPath}/${artifactName} ./artifacts.zip"
+        sh "aws s3 cp s3://${artifactBucket}/${artifactPath}/${artifactName}-${env.BUILD_NUMBER} ./artifacts.zip"
         sh "unzip -o artifacts.zip && rm -f artifacts.zip"
    }
 
