@@ -16,12 +16,12 @@ node {
             sourceControlType: 'jenkins',
             artifactLocationOverride: 'acme-ci-jenkins-codebuild',
             artifactTypeOverride: 'S3',
-            artifactNameOverride: 'artifacts/acme-web-app'
+            artifactNameOverride: 'artifacts-acme-web-app'
     }
 
     stage('Copy Artifacts') {
         sh "aws configure set s3.signature_version s3v4"
-        sh "aws s3 cp s3://acme-ci-jenkins-codebuild/artifacts/acme-web-app ./artifacts.zip"
+        sh "aws s3 cp s3://acme-ci-jenkins-codebuild/artifacts-acme-web-app ./artifacts.zip"
         sh "unzip -o artifacts.zip && rm -f artifacts.zip"
         junit "test-results/*.xml"
    }
