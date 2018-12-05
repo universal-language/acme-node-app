@@ -10,8 +10,7 @@ node {
     }
 
     stage('Build & Test') {
-        awsCodeBuild
-            projectName: 'acme-ci-nodejs-carbon-generic',
+        awsCodeBuild projectName: 'acme-ci-nodejs-carbon-generic',
             credentialsType: 'keys',
             region: 'us-east-1',
             sourceControlType: 'jenkins'
