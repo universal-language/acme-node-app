@@ -1,0 +1,22 @@
+{
+  "name": "acme-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0"
+  },
+  "jest-junit": {
+    "output": "./test-results/unit-tests.xml"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
+  }
+}
