@@ -15,6 +15,7 @@ node {
             region: 'us-east-1',
             sourceControlType: 'jenkins',
             artifactLocationOverride: 'acme-ci-jenkins-codebuild',
+            artifactPackagingOverride: 'ZIP',
             artifactPathOverride: 'artifacts',
             artifactTypeOverride: 'S3',
             artifactNameOverride: 'acme-web-app'
