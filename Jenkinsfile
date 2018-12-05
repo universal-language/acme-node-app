@@ -4,9 +4,6 @@
 def gitBranch;
 
 node {
-    def nodeJsHome = tool 'NodeJS8'
-    env.PATH = "${nodeJsHome}/bin:${env.PATH}"
-
     stage('Dependencies') {
         checkout scm
         gitBranch = env.BRANCH_NAME;
