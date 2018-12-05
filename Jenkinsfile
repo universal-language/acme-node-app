@@ -14,6 +14,7 @@ node {
             credentialsType: 'keys',
             region: 'us-east-1',
             sourceControlType: 'jenkins',
+            artifactLocationOverride: 'NONE',
             artifactTypeOverride: 'S3',
             artifactNameOverride: 'acme-web-app'
     }
