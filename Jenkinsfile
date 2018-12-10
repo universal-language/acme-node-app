@@ -43,7 +43,7 @@ node {
 if ("master" == env.BRANCH_NAME) {
     stage('Production') {
         timeout(time: 1, unit: 'DAYS') {
-            input message: "Do you want to deploy ${shortCommit} to PROD?"
+            input message: "Do you want to deploy to PROD?"
         }
         node {
             stage('Deploy Production') {
