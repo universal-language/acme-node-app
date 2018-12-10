@@ -4,11 +4,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - yarn install
+      - npm install
   build:
     commands:
       - echo Build started on `date`
-      - yarn test
+      - npm test
 
 artifacts:
   files:
