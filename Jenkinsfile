@@ -31,4 +31,23 @@ node {
    stage('Test Results') {
         junit "test-results/*.xml"
    }
+
+    if ("master" == env.BRANCH_NAME) {
+        stage('Deploy Stage') {
+            echo "Deploying stage"
+        }
+    }
+}
+
+if ("master" == env.BRANCH_NAME) {
+    stage('Production') {
+        timeout(time: 1, unit: 'DAYS') {
+            input message: "Do you want to deploy ${shortCommit} to PROD?"
+        }
+        node {
+            stage('Deploy Production') {
+                echo "Deploying prod"
+            }
+        }
+    }
 }
