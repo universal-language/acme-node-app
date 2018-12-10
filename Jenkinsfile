@@ -7,6 +7,7 @@ final ARTIFACT_NAME = "acme-web-app"
 
 node {
     stage('Dependencies') {
+        sh "env"
         checkout scm
         sh "aws configure set s3.signature_version s3v4"
     }
